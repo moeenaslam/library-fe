@@ -1,26 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import Login from "./features/login";
+import {AuthUtil} from "./util/AuthUtil";
+import {Home} from "./features/home";
+import {ViewBook} from "./features/viewbook";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<Home/>} />
+          <Route path="/books/:bookId" element={<ViewBook/>} />
+          <Route path="/auth" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 
-export default App;
+export default App

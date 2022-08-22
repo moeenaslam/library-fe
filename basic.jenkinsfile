@@ -14,8 +14,7 @@ pipeline {
                     try {
                         sh "docker stop library-fe"
                     } catch (err){}
-                    sh "docker build . -t library-fe-image"
-                    sh "docker run -d -p 80:80 --name library-fe library-fe-image"
+                    sh "docker compose up -d library-fe"
                 }
             }
         }
